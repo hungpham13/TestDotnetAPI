@@ -1,0 +1,18 @@
+POST https://localhost:7279/breakfasts
+Content-Type: application/json
+
+{
+    "name": "Vegan Sunshine Breakfast for youngster it will be a great experience",
+    "description": "Vegan everything! Join safasdfjaklfjasldfj as we make a vegan breakfast that will make you feel like you're in the tropics!",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "savory": [
+        "Oatmeal",
+        "Avocado Toast",
+        "Omelette",
+        "Salad"
+    ],
+    "Sweet": [
+        "Cookie"
+    ]
+}

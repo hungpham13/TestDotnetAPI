@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VLPLST330n7eKruPWehh/vPl3FB8vs1+FQdwrUUw8icW6cU/z2SYpS1T7rMKz80BslPpf/rfjFoOvsS81TW3oQ==",
+  "success": true,
+  "projectFilePath": "/home/hung/DotNetProjects/BuberBreakfast/BuberBreakfast.Contracts/BuberBreakfast.Contracts.csproj",
+  "expectedPackageFiles": [
+    "/home/hung/.nuget/packages/microsoft.netcore.app.ref/6.0.12/microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
+    "/home/hung/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.12/microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
