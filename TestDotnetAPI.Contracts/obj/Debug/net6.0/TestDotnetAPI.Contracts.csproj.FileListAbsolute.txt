@@ -1,0 +1,12 @@
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/bin/Debug/net6.0/TestDotnetAPI.Contracts.deps.json
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/bin/Debug/net6.0/TestDotnetAPI.Contracts.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/bin/Debug/net6.0/TestDotnetAPI.Contracts.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/TestDotnetAPI.Contracts.csproj.AssemblyReference.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/TestDotnetAPI.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/TestDotnetAPI.Contracts.AssemblyInfoInputs.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/TestDotnetAPI.Contracts.AssemblyInfo.cs
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/TestDotnetAPI.Contracts.csproj.CoreCompileInputs.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/TestDotnetAPI.Contracts.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/refint/TestDotnetAPI.Contracts.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/TestDotnetAPI.Contracts.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/obj/Debug/net6.0/ref/TestDotnetAPI.Contracts.dll

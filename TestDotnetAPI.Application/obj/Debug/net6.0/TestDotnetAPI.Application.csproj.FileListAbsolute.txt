@@ -1,0 +1,15 @@
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/bin/Debug/net6.0/TestDotnetAPI.Application.deps.json
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/bin/Debug/net6.0/TestDotnetAPI.Application.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/bin/Debug/net6.0/TestDotnetAPI.Application.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.csproj.AssemblyReference.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.AssemblyInfoInputs.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.AssemblyInfo.cs
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.csproj.CoreCompileInputs.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/refint/TestDotnetAPI.Application.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/ref/TestDotnetAPI.Application.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/bin/Debug/net6.0/TestDotnetAPI.Domain.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/bin/Debug/net6.0/TestDotnetAPI.Domain.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/Debug/net6.0/TestDotnetAPI.Application.csproj.CopyComplete

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8hdk6keZm85UBxyTcM/79AIwYGIdNv6V0Mwpt43Nilrm9/aiJnoDp53NeCUNqPqxdV+iwI9UUPTkN2WoSnGv4w==",
+  "success": true,
+  "projectFilePath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Domain/TestDotnetAPI.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/hung/.nuget/packages/microsoft.netcore.app.ref/6.0.12/microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
+    "/home/hung/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.12/microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

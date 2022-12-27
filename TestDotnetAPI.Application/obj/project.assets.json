@@ -1,0 +1,99 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "TestDotnetAPI.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/TestDotnetAPI.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TestDotnetAPI.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TestDotnetAPI.Domain/1.0.0": {
+      "type": "project",
+      "path": "../TestDotnetAPI.Domain/TestDotnetAPI.Domain.csproj",
+      "msbuildProject": "../TestDotnetAPI.Domain/TestDotnetAPI.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "TestDotnetAPI.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/hung/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/TestDotnetAPI.Application.csproj",
+      "projectName": "TestDotnetAPI.Application",
+      "projectPath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/TestDotnetAPI.Application.csproj",
+      "packagesPath": "/home/hung/.nuget/packages/",
+      "outputPath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Application/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/hung/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Domain/TestDotnetAPI.Domain.csproj": {
+              "projectPath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Domain/TestDotnetAPI.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.12, 6.0.12]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.12, 6.0.12]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.404/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

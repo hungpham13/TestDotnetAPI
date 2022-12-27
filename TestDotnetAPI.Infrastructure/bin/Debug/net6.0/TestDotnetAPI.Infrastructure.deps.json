@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "TestDotnetAPI.Infrastructure/1.0.0": {
+        "dependencies": {
+          "TestDotnetAPI.Application": "1.0.0"
+        },
+        "runtime": {
+          "TestDotnetAPI.Infrastructure.dll": {}
+        }
+      },
+      "TestDotnetAPI.Application/1.0.0": {
+        "dependencies": {
+          "TestDotnetAPI.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TestDotnetAPI.Application.dll": {}
+        }
+      },
+      "TestDotnetAPI.Domain/1.0.0": {
+        "runtime": {
+          "TestDotnetAPI.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TestDotnetAPI.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TestDotnetAPI.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TestDotnetAPI.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

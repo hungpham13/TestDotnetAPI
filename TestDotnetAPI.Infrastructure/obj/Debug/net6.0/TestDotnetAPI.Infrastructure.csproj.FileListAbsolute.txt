@@ -1,0 +1,17 @@
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/bin/Debug/net6.0/TestDotnetAPI.Infrastructure.deps.json
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/bin/Debug/net6.0/TestDotnetAPI.Infrastructure.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/bin/Debug/net6.0/TestDotnetAPI.Infrastructure.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.csproj.AssemblyReference.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.AssemblyInfoInputs.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.AssemblyInfo.cs
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.csproj.CoreCompileInputs.cache
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/refint/TestDotnetAPI.Infrastructure.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/ref/TestDotnetAPI.Infrastructure.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/bin/Debug/net6.0/TestDotnetAPI.Application.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/bin/Debug/net6.0/TestDotnetAPI.Domain.dll
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/bin/Debug/net6.0/TestDotnetAPI.Application.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/bin/Debug/net6.0/TestDotnetAPI.Domain.pdb
+/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/obj/Debug/net6.0/TestDotnetAPI.Infrastructure.csproj.CopyComplete
