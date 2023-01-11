@@ -2,6 +2,9 @@
 
 - [Buber Breakfast API](#buber-breakfast-api)
   - [User](#user)
+  - [Create User](#create-user)
+    - [Create User Request](#create-user-request)
+    - [Create User Response](#create-user-response)
   - [Create Breakfast](#create-breakfast)
     - [Create Breakfast Request](#create-breakfast-request)
     - [Create Breakfast Response](#create-breakfast-response)
@@ -15,7 +18,7 @@
     - [Delete Breakfast Request](#delete-breakfast-request)
     - [Delete Breakfast Response](#delete-breakfast-response)
 
-# User
+## User
 
 ![API description](Docs/userApi.png)
 
