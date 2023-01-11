@@ -5,7 +5,7 @@ public record AttendanceResponse(
     Guid UserId,
     Guid EventId,
     DateTime CreateAt,
-    DateTime LastModifiedAt,
+    DateTime ModifiedAt,
     string Status,
     string token
 );

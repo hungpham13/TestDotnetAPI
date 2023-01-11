@@ -1,6 +1,5 @@
-namespace TestDotnetAPI.Contracts.Attendance
-{
-    public record UpdateAttendanceRequest(
-        string Status
-    );
-}
+namespace TestDotnetAPI.Contracts.Attendance;
+
+public record UpdateAttendanceRequest(
+    string Status
+);
