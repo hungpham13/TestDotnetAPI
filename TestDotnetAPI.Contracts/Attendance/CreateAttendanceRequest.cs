@@ -1,6 +1,6 @@
 namespace TestDotnetAPI.Contracts.Attendance;
 
-public record AddAttendanceRequest(
+public record CreateAttendanceRequest(
     Guid UserId,
     Guid EventId
 );
