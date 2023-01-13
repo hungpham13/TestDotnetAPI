@@ -16,4 +16,8 @@ public static class Errors
             code: "Breakfast.NotFound",
             description: "Breakfast not found");
     }
+    public static class User
+    {
+
+    }
 }

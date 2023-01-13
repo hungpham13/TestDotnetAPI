@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LbSQRzLRCNvKbKQCvGaEeHTCqaCUdw6q2LqYUsWT7/SeWmRHszBpau885FhcQfav/SEqazG1tgc5c7KgXzV5qg==",
+  "dgSpecHash": "lUMBKjzzPkZvjm4smQkOzYpwa4b//Zykf9yM5hfAv4b61/JaEZTeRKev7nwSBzuCFNkMkjiPz5pdULFCaw1c6w==",
   "success": true,
   "projectFilePath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/TestDotnetAPI.Contracts.csproj",
-  "expectedPackageFiles": [
-    "/home/hung/.nuget/packages/microsoft.netcore.app.ref/6.0.12/microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
-    "/home/hung/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.12/microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

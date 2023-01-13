@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using TestDotnetAPI.Contracts.Event;
 namespace TestDotnetAPI.Controllers;
 
 public class EventsController : ApiController

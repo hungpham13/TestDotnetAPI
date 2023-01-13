@@ -1,13 +1,13 @@
 namespace TestDotnetAPI.Contracts.Event;
 
-public record CreateEvent(
+public record CreateEventRequest(
     string Name,
-    string? Performer = "",
+    string Performer,
     DateTime time,
-    string? Status = "Sap dien ra",
-    string? Description = "",
-    List<Models.Stream>? Streams = new(),
-    string? mainImage = "",
-    string? coverImage = "",
-    List<Models.Attendance>? Attendances = new()
+    string Status,
+    string Description,
+    List<Stream> Streams,
+    string mainImage,
+    string coverImage,
+    List<Attendance> Attendances
 );

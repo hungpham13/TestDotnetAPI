@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PFWFm7FkAsdOycyglxrv3RxbSaZIVmc9XBf6xv2mEe980axwBEAwISsHnvMVfGjKo+aI65peaiU92KIxjzQHDw==",
+  "dgSpecHash": "rof49swK19zuHzWLV4ITEDHAePANIAZ0qXhcI5PYyBGl5j1I08nGV31lLoV9KbDlyZHoJ4fFjCuPo9k/Hzym8g==",
   "success": true,
   "projectFilePath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/TestDotnetAPI.Infrastructure.csproj",
-  "expectedPackageFiles": [
-    "/home/hung/.nuget/packages/microsoft.netcore.app.ref/6.0.12/microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
-    "/home/hung/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.12/microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

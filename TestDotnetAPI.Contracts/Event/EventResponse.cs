@@ -1,4 +1,3 @@
-using TestDotnetAPI.Models;
 namespace TestDotnetAPI.Contracts.Event;
 
 public record EventResponse(
@@ -8,8 +7,8 @@ public record EventResponse(
     DateTime time,
     string Status,
     string Description,
-    List<Models.Stream> Streams,
+    List<Stream> Streams,
     string mainImage,
     string coverImage,
-    List<Models.Attendance> Attendances
+    List<Attendance> Attendances
 );

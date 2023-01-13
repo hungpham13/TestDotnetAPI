@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using TestDotnetAPI.Contracts.Attendance;
+
 namespace TestDotnetAPI.Controllers;
 
 public class AttendancesController : ApiController

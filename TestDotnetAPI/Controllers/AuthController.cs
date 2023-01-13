@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using TestDotnetAPI.Contracts.Auth;
+using TestDotnetAPI.Contracts.Authentication;
 
 namespace TestDotnetAPI.Controllers;
 
