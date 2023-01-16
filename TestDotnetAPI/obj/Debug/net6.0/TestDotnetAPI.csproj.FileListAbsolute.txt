@@ -3,7 +3,6 @@
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/obj/Debug/net6.0/TestDotnetAPI.AssemblyInfoInputs.cache
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/obj/Debug/net6.0/TestDotnetAPI.AssemblyInfo.cs
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/obj/Debug/net6.0/TestDotnetAPI.csproj.CoreCompileInputs.cache
-/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/obj/Debug/net6.0/TestDotnetAPI.MvcApplicationPartsAssemblyInfo.cs
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/obj/Debug/net6.0/TestDotnetAPI.MvcApplicationPartsAssemblyInfo.cache
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/appsettings.Development.json
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/appsettings.json
@@ -25,12 +24,8 @@
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
-/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Microsoft.OpenApi.dll
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Microsoft.SqlServer.Server.dll
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll
-/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
-/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
-/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/System.Configuration.ConfigurationManager.dll
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/System.Drawing.Common.dll
 /home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll

@@ -2,42 +2,50 @@ using Microsoft.AspNetCore.Mvc;
 using TestDotnetAPI.Contracts.User;
 using ErrorOr;
 using TestDotnetAPI.Models;
+using TestDotnetAPI.Services.Users;
 
 namespace TestDotnetAPI.Controllers;
 
 public class UsersController : ApiController
 {
-    public UsersController()
+
+    private readonly IUserService _userService;
+    public UsersController(IUserService userService)
     {
+        _userService = userService;
     }
 
     [HttpPost]
     public IActionResult CreateUser(CreateUserRequest request)
     {
         // transfer to model format
-        ErrorOr<Breakfast> requestToBreakfastFormat = Breakfast.From(request);
-        if (requestToBreakfastFormat.IsError)
-        {
-            return Problem(requestToBreakfastFormat.Errors);
-        }
-        var breakfast = requestToBreakfastFormat.Value;
 
-        // save breakfast to database
-        ErrorOr<Created> result = .CreateBreakfast(breakfast);
+        ErrorOr<Models.User> requestToUserFormat = Models.User.From(request);
+        if (requestToUserFormat.IsError)
+        {
+            return Problem(requestToUserFormat.Errors);
+        }
+        var user = requestToUserFormat.Value;
+
+        // save user to database
+        ErrorOr<Created> result = _userService.CreateUser(user);
 
         // transfer to response format
         return result.Match(
-            created => CreatedAsGetBreakfast(breakfast),
+            created => CreatedAsGetUser(user),
             errors => Problem(errors));
     }
 
     [HttpGet("{id:guid}")]
     public IActionResult GetUser(Guid id)
     {
-        return Ok("Hello World");
+        ErrorOr<Models.User> userResult = _userService.GetUser(id);
+        return userResult.Match(
+            user => Ok(MapUserResponse(user)),
+            errors => Problem(errors));
     }
 
-    [HttpGet("?page={page_num:int}&size={page_size:int}")]
+    [HttpGet("")]
     public IActionResult GetUsers(int page_num, int page_size)
     {
         return Ok("Hello World");
@@ -46,13 +54,30 @@ public class UsersController : ApiController
     [HttpDelete("{id:guid}")]
     public IActionResult DeleteUser(Guid id)
     {
-        return Ok("Hello World");
+        ErrorOr<Deleted> result = _userService.DeleteUser(id);
+        return result.Match(
+            deleted => NoContent(),
+            errors => Problem(errors));
     }
 
     [HttpPut("{id:guid}")]
     public IActionResult UpdateUser(Guid id, UpdateUserRequest request)
     {
-        return Ok("Hello World");
+        ErrorOr<Models.User> requestToUserFormat = Models.User.From(id, request);
+        if (requestToUserFormat.IsError)
+        {
+            return Problem(requestToUserFormat.Errors);
+        }
+
+        var user = requestToUserFormat.Value;
+
+        ErrorOr<UpdatedUser> result = _userService.UpdateUser(user);
+
+        return result.Match(
+            updatedUser => updatedUser.isNewlyCreated
+                ? CreatedAsGetUser(user)
+                : Ok(MapUserResponse(user)),
+            errors => Problem(errors));
     }
 
     private static UserResponse MapUserResponse(User user)

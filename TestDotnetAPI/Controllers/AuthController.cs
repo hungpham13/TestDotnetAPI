@@ -3,7 +3,7 @@ using TestDotnetAPI.Contracts.Authentication;
 
 namespace TestDotnetAPI.Controllers;
 
-public class AuthController
+public class AuthController : ApiController
 {
     public AuthController()
     {

@@ -9,13 +9,14 @@
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.2.1" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <!-- <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" /> -->
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TestDotnetAPI.Contracts\TestDotnetAPI.Contracts.csproj" />
     <ProjectReference Include="..\TestDotnetAPI.Application\TestDotnetAPI.Application.csproj" />
     <ProjectReference Include="..\TestDotnetAPI.Infrastructure\TestDotnetAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\TestDotnetAPI.Domain\TestDotnetAPI.Domain.csproj" />
   </ItemGroup>
 
 </Project>

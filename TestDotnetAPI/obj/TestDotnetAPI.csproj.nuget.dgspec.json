@@ -252,6 +252,9 @@
               "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/TestDotnetAPI.Contracts.csproj": {
                 "projectPath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Contracts/TestDotnetAPI.Contracts.csproj"
               },
+              "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Domain/TestDotnetAPI.Domain.csproj": {
+                "projectPath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Domain/TestDotnetAPI.Domain.csproj"
+              },
               "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/TestDotnetAPI.Infrastructure.csproj": {
                 "projectPath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI.Infrastructure/TestDotnetAPI.Infrastructure.csproj"
               }
@@ -275,10 +278,6 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.0.1, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
             }
           },
           "imports": [

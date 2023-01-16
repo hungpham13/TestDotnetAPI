@@ -26,7 +26,8 @@ public class EventsController : ApiController
         return Ok("Hello World");
     }
 
-    [HttpGet("?page={page_num:int}&size={page_size:int}")]
+    // [HttpGet("?page={page_num:int}&size={page_size:int}")]
+    [HttpGet("")]
     public IActionResult GetEvents(int page_num, int page_size)
     {
         return Ok("Hello World");

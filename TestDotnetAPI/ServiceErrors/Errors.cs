@@ -18,6 +18,29 @@ public static class Errors
     }
     public static class User
     {
-
+        public static Error NotFound => Error.NotFound(
+            code: "User.NotFound",
+            description: "User not found");
+        public static Error InvalidName => Error.Validation(
+            code: "User.InvalidName",
+            description: $"Name must be not longer than {Models.User.MAX_NAME_LENGTH} characters");
+        public static Error InvalidUserName => Error.Validation(
+            code: "User.InvalidUserName",
+            description: $"Username must be not longer than {Models.User.MAX_USERNAME_LENGTH} characters");
+        public static Error InvalidPassword => Error.Validation(
+            code: "User.InvalidPassword",
+            description: $"Password must be between {Models.User.MIN_PASSWORD_LENGTH} and {Models.User.MAX_PASSWORD_LENGTH} characters long");
+        public static Error InvalidPhoneNumber => Error.Validation(
+            code: "User.InvalidPhoneNumber",
+            description: $"Phone number must be not longer than {Models.User.MAX_PHONENUMBER_LENGTH} characters");
+        public static Error InvalidRole => Error.Validation(
+            code: "User.InvalidRole",
+            description: $"Role must be {string.Join(", ", Models.User.VALID_ROLES[..^1])} or {Models.User.VALID_ROLES[^1]}");
+        public static Error InvalidActiveTime => Error.Validation(
+            code: "User.InvalidActiveTime",
+            description: $"Start active time must be before end active time");
+        public static Error DBError(string e) => Error.DatabaseError(
+            code: "User.DBError",
+            description: e);
     }
 }
