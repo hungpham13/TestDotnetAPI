@@ -1,0 +1,3 @@
+@id=2
+
+DELETE https://localhost:7279/users/{{id}}

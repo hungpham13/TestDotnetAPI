@@ -1,6 +1,9 @@
 using TestDotnetAPI.ServiceErrors;
 using ErrorOr;
 using TestDotnetAPI.Contracts.User;
+using TestDotnetAPI.Contracts.Authentication;
+using Microsoft.Data.SqlClient;
+using TestDotnetAPI.Common.Utils;
 
 namespace TestDotnetAPI.Models;
 public class User
@@ -97,7 +100,7 @@ public class User
             activeTimeEnd
         );
     }
-    public static ErrorOr<User> From(CreateUserRequest request)
+    public static ErrorOr<User> From(RegisterRequest request)
     {
         return Create(
             request.UserName,
@@ -110,7 +113,7 @@ public class User
             DateTime.Now.AddYears(1)
         );
     }
-    public static ErrorOr<User> From(Guid id, UpdateUserRequest request)
+    public static ErrorOr<User> From(CreateUserRequest request)
     {
         return Create(
             request.UserName,
@@ -119,9 +122,36 @@ public class User
             request.Role,
             request.PhoneNumber,
             request.Active,
-            request.ActiveTimeStart,
-            request.ActiveTimeEnd,
-            request.Id
+            request.ActiveTimeStart ?? default,
+            request.ActiveTimeEnd ?? default
+        );
+    }
+    public static ErrorOr<User> From(Guid id, UpdateUserRequest request, User user)
+    {
+        return Create(
+            request.UserName ?? user.UserName,
+            request.Name ?? user.Name,
+            user.Password,
+            request.Role ?? user.Role,
+            request.PhoneNumber ?? user.PhoneNumber,
+            request.Active ?? user.Active,
+            request.ActiveTimeStart ?? user.ActiveTimeStart,
+            request.ActiveTimeEnd ?? user.ActiveTimeEnd,
+            id
+        );
+    }
+    public static ErrorOr<User> From(System.Data.DataRow reader)
+    {
+        return Create(
+            reader["UserName"] as string,
+            reader["Name"] as string,
+            reader["Password"] as string,
+            reader["Role"] as string,
+            reader["PhoneNumber"] as string,
+            (bool)reader["Active"],
+            Util.ConvertFromDBVal<DateTime>(reader["ActiveTimeStart"]),
+            Util.ConvertFromDBVal<DateTime>(reader["ActiveTimeEnd"]),
+            Guid.Parse(reader["Id"].ToString())
         );
     }
 }

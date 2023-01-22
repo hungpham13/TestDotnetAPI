@@ -1,0 +1,1 @@
+GET https://localhost:7279/users?page=1&size=0

@@ -2,9 +2,10 @@ POST https://localhost:7279/users
 Content-Type: application/json
 
 {
-    "userName": "hungpham13",
+    "userName": "hung0",
     "name": "Phạm Thành Hưng",
-    "role": "Admin",
-    "password": "123456",
-    "phoneNumber": "0971169255"
+    "role": "User",
+    "password": "12345678",
+    "phoneNumber": "0971169255",
+    "active": false
 }

@@ -1,23 +1,29 @@
 using Microsoft.Data.SqlClient;
+using ErrorOr;
+using TestDotnetAPI.ServiceErrors;
 using System;
+using System.Data;
 
 namespace TestDotnetAPI.Services.Database;
 class DatabaseService
 {
+    public const string CONNECTION_STRING = "Data Source=172.16.1.118;Initial Catalog=DbThucTap;User ID=thuctap;Password=tt@123;Trust Server Certificate=True;";
+    public const string ACCOUNT_TABLE = "[dbo].[Account]";
     public static SqlConnection conn = null;
 
-    private static void connect(string[] args)
+    private static void connect()
     {
         try
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            // SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            builder.DataSource = "172.16.1.118";
-            builder.UserID = "thuctap";
-            builder.Password = "tt@123";
-            builder.InitialCatalog = "DbThucTap";
-            Console.WriteLine(builder.ConnectionString);
-            conn = new SqlConnection(builder.ConnectionString);
+            // builder.DataSource = "172.16.1.118";
+            // builder.UserID = "thuctap";
+            // builder.Password = "tt@123";
+            // builder.InitialCatalog = "DbThucTap";
+            // string connectionString = builder.ConnectionString + ";Trust Server Certificate=True;";
+            Console.WriteLine(CONNECTION_STRING);
+            conn = new SqlConnection(CONNECTION_STRING);
         }
         catch (SqlException e)
         {
@@ -37,43 +43,93 @@ class DatabaseService
         //     }
         // }
     }
-    public static ErrorOr<SqlDataReader> query(string sql)
+    public static ErrorOr<DataTable> query(string sql)
     {
+        System.Console.WriteLine(sql);
         SqlDataReader reader;
+        var dt = new DataTable();
         try
         {
             if (conn == null) connect();
             conn.Open();
-            using (SqlCommand command = new SqlCommand(sql, conn))
+            using (SqlDataAdapter command = new SqlDataAdapter(sql, conn))
             {
-                reader = command.ExecuteReader();
+                command.Fill(dt);
+                // reader = command.ExecuteReader();
             }
             conn.Close();
-            return reader;
+            return dt;
         }
         catch (SqlException e)
         {
-            Console.WriteLine(e.ToString());
+            conn.Close();
+            return Errors.Database.QueryError(e.ToString());
         }
     }
-    public static void update(string sql, char type)
+    public static ErrorOr<Created> insert(string sql)
     {
         SqlDataAdapter adapter = new SqlDataAdapter();
+        System.Console.WriteLine(sql);
         try
         {
             if (conn == null) connect();
             conn.Open();
             using (SqlCommand command = new SqlCommand(sql, conn))
             {
-                if (type == 'i') adapter.InsertCommand = new SqlCommand(sql, conn);
-                else if (type == 'd') adapter.DeleteCommand = new SqlCommand(sql, conn);
-                else if (type == 'u') adapter.UpdateCommand = new SqlCommand(sql, conn);
-                adapter.UpdateCommand.ExecuteNonQuery();
+                adapter.InsertCommand = command;
+                adapter.InsertCommand.ExecuteNonQuery();
             }
+            conn.Close();
+            return Result.Created;
         }
         catch (SqlException e)
         {
-            Console.WriteLine(e.ToString());
+            conn.Close();
+            return Errors.Database.UpdateError(e.ToString());
+        }
+    }
+    public static ErrorOr<Updated> update(string sql)
+    {
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        System.Console.WriteLine(sql);
+        try
+        {
+            if (conn == null) connect();
+            conn.Open();
+            using (SqlCommand command = new SqlCommand(sql, conn))
+            {
+                adapter.UpdateCommand = command;
+                adapter.UpdateCommand.ExecuteNonQuery();
+            }
+            conn.Close();
+            return Result.Updated;
+        }
+        catch (SqlException e)
+        {
+            conn.Close();
+            return Errors.Database.UpdateError(e.ToString());
+        }
+    }
+    public static ErrorOr<Deleted> delete(string sql)
+    {
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        System.Console.WriteLine(sql);
+        try
+        {
+            if (conn == null) connect();
+            conn.Open();
+            using (SqlCommand command = new SqlCommand(sql, conn))
+            {
+                adapter.DeleteCommand = command;
+                adapter.DeleteCommand.ExecuteNonQuery();
+            }
+            conn.Close();
+            return Result.Deleted;
+        }
+        catch (SqlException e)
+        {
+            conn.Close();
+            return Errors.Database.UpdateError(e.ToString());
         }
     }
 }

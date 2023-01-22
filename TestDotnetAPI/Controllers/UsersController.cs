@@ -3,6 +3,8 @@ using TestDotnetAPI.Contracts.User;
 using ErrorOr;
 using TestDotnetAPI.Models;
 using TestDotnetAPI.Services.Users;
+using TestDotnetAPI.Services.Database;
+using System.Data;
 
 namespace TestDotnetAPI.Controllers;
 
@@ -46,9 +48,22 @@ public class UsersController : ApiController
     }
 
     [HttpGet("")]
-    public IActionResult GetUsers(int page_num, int page_size)
+    public IActionResult GetUsers(int page, int size)
     {
-        return Ok("Hello World");
+        string getTotalSql = $"SELECT COUNT(*) FROM {DatabaseService.ACCOUNT_TABLE}";
+        ErrorOr<DataTable> result = DatabaseService.query(getTotalSql);
+        if (result.IsError) return Problem(result.Errors);
+        var table = result.Value;
+        int total = table.AsEnumerable().First().Field<int>(0);
+
+        ErrorOr<List<Models.User>> usersResult = _userService.GetUsers(page, size);
+        if (usersResult.IsError) return Problem(usersResult.Errors);
+        return Ok(new AllUserResponse(
+            total,
+            size == 0 ? 0 : (int)Math.Ceiling((double)total / size),
+            page,
+            usersResult.Value.Select(MapUserResponse).ToList()
+        ));
     }
 
     [HttpDelete("{id:guid}")]
@@ -56,14 +71,18 @@ public class UsersController : ApiController
     {
         ErrorOr<Deleted> result = _userService.DeleteUser(id);
         return result.Match(
-            deleted => NoContent(),
+            deleted => Ok(),
             errors => Problem(errors));
     }
 
     [HttpPut("{id:guid}")]
     public IActionResult UpdateUser(Guid id, UpdateUserRequest request)
     {
-        ErrorOr<Models.User> requestToUserFormat = Models.User.From(id, request);
+        ErrorOr<Models.User> userResult = _userService.GetUser(id);
+        if (userResult.IsError) return Problem(userResult.Errors);
+        Models.User oldUser = userResult.Value;
+
+        ErrorOr<Models.User> requestToUserFormat = Models.User.From(id, request, oldUser);
         if (requestToUserFormat.IsError)
         {
             return Problem(requestToUserFormat.Errors);
@@ -71,12 +90,10 @@ public class UsersController : ApiController
 
         var user = requestToUserFormat.Value;
 
-        ErrorOr<UpdatedUser> result = _userService.UpdateUser(user);
+        ErrorOr<Updated> result = _userService.UpdateUser(user);
 
         return result.Match(
-            updatedUser => updatedUser.isNewlyCreated
-                ? CreatedAsGetUser(user)
-                : Ok(MapUserResponse(user)),
+            updated => Ok(MapUserResponse(user)),
             errors => Problem(errors));
     }
 

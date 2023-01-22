@@ -1,0 +1,13 @@
+@id=9851dbb2-0953-48d3-87a4-2876eea76c42
+@token=
+
+PUT https://localhost:7279/users/{{id}}?token={{token}}
+Content-Type: application/json
+
+{
+    "userName": "hung3",
+    "name": "Vu Hung",
+    "role": "User",
+    "password": "12345678",
+    "phoneNumber": "0971169255"
+}

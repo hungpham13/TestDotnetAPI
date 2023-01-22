@@ -18,6 +18,9 @@ public static class Errors
     }
     public static class User
     {
+        public static Error UsernameExisted => Error.Validation(
+            code: "User.UsernameExisted",
+            description: "Username already existed");
         public static Error NotFound => Error.NotFound(
             code: "User.NotFound",
             description: "User not found");
@@ -35,12 +38,18 @@ public static class Errors
             description: $"Phone number must be not longer than {Models.User.MAX_PHONENUMBER_LENGTH} characters");
         public static Error InvalidRole => Error.Validation(
             code: "User.InvalidRole",
-            description: $"Role must be {string.Join(", ", Models.User.VALID_ROLES[..^1])} or {Models.User.VALID_ROLES[^1]}");
+            description: $"Role must be {string.Join(", ", Enum.GetNames(typeof(Models.User.VALID_ROLES))[..^1])} or {Enum.GetNames(typeof(Models.User.VALID_ROLES))[^1]}");
         public static Error InvalidActiveTime => Error.Validation(
             code: "User.InvalidActiveTime",
             description: $"Start active time must be before end active time");
-        public static Error DBError(string e) => Error.DatabaseError(
-            code: "User.DBError",
+    }
+    public static class Database
+    {
+        public static Error QueryError(string e) => Error.Failure(
+            code: "Database.QueryError",
+            description: e);
+        public static Error UpdateError(string e) => Error.Failure(
+            code: "Database.UpdateError",
             description: e);
     }
 }

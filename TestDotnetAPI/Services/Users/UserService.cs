@@ -2,47 +2,107 @@ using TestDotnetAPI.Models;
 using TestDotnetAPI.ServiceErrors;
 using ErrorOr;
 using TestDotnetAPI.Services.Database;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace TestDotnetAPI.Services.Users;
 
 public class UserService : IUserService
 {
-    private static readonly Dictionary<Guid, User> _users = new();
+    // private static readonly Dictionary<Guid, User> _users = new();
 
     public ErrorOr<Created> CreateUser(User user)
     {
-        _users.Add(user.Id, user);
-        try
+        // _users.Add(user.Id, user);
+        //check for existed username
+        string sql1 = $"SELECT * FROM {DatabaseService.ACCOUNT_TABLE} WHERE UserName = '{user.UserName}';";
+        ErrorOr<DataTable> result = DatabaseService.query(sql1);
+        if (result.IsError) return result.Errors;
+
+        var table = result.Value;
+
+        if (table.Rows.Count > 0) return Errors.User.UsernameExisted;
+
+        string sql;
+        if (user.ActiveTimeStart == DateTime.MinValue)
         {
-            DatabaseService.update("INSERT INTO [dbo].[Account] ([Id], [Name], [Role], [PhoneNumber], [Password], [Active], [ActiveTimeStart], [ActiveTimeEnd]) VALUES" +
-                $"('{user.Id}', '{user.Name}', '{user.Role}', '{user.PhoneNumber}', '{user.Password}', {(user.Active ? 1 : 0)}, {user.ActiveTimeStart}, {user.ActiveTimeEnd});", 'i');
-            return Result.Created;
+            sql =
+                $"INSERT INTO {DatabaseService.ACCOUNT_TABLE} ([Id], [UserName], [Name], [Role], [PhoneNumber], [Password], [Active]) VALUES" +
+                $"('{user.Id}', '{user.UserName}', '{user.Name}', '{user.Role}', '{user.PhoneNumber}', '{user.Password}', {(user.Active ? 1 : 0)});";
         }
-        catch (Exception e)
+        else
         {
-            return Errors.User.DBError(e.ToString());
+            sql =
+                $"INSERT INTO {DatabaseService.ACCOUNT_TABLE} ([Id], [UserName], [Name], [Role], [PhoneNumber], [Password], [Active], [ActiveTimeStart], [ActiveTimeEnd]) VALUES" +
+                $"('{user.Id}', '{user.UserName}', '{user.Name}', '{user.Role}', '{user.PhoneNumber}', '{user.Password}', {(user.Active ? 1 : 0)}, '{user.ActiveTimeStart}', '{user.ActiveTimeEnd}');";
         }
+        return DatabaseService.insert(sql);
     }
 
     public ErrorOr<Deleted> DeleteUser(Guid id)
     {
-        _users.Remove(id);
-        return Result.Deleted;
+        // _users.Remove(id);
+        string sql = $"DELETE FROM {DatabaseService.ACCOUNT_TABLE} WHERE Id = '{id}';";
+        return DatabaseService.delete(sql);
     }
 
     public ErrorOr<User> GetUser(Guid id)
     {
-        if (_users.ContainsKey(id))
+        string sql = $"SELECT * FROM {DatabaseService.ACCOUNT_TABLE} WHERE Id = '{id}';";
+        ErrorOr<DataTable> result = DatabaseService.query(sql);
+        if (result.IsError) return result.Errors;
+
+        var table = result.Value;
+
+        if (table.Rows.Count > 0)
         {
-            return _users[id];
+            return User.From(table.AsEnumerable().First());
         }
         return Errors.User.NotFound;
     }
 
-    public ErrorOr<UpdatedUser> UpdateUser(User user)
+    public ErrorOr<Updated> UpdateUser(User user)
     {
-        var isNewlyCreated = !_users.ContainsKey(user.Id);
-        _users[user.Id] = user;
-        return new UpdatedUser(isNewlyCreated);
+        //check for existed username
+        string sql1 = $"SELECT * FROM {DatabaseService.ACCOUNT_TABLE} WHERE UserName = '{user.UserName}' AND Id != '{user.Id}';";
+        ErrorOr<DataTable> result = DatabaseService.query(sql1);
+        if (result.IsError) return result.Errors;
+
+        var table = result.Value;
+
+        if (table.Rows.Count > 0) return Errors.User.UsernameExisted;
+
+        string sql = $"UPDATE {DatabaseService.ACCOUNT_TABLE} SET " +
+            $"[UserName] = '{user.UserName}', " +
+            $"[Name] = '{user.Name}', " +
+            $"[Role] = '{user.Role}', " +
+            $"[PhoneNumber] = '{user.PhoneNumber}', " +
+            $"[Password] = '{user.Password}', " +
+            $"[Active] = {(user.Active ? 1 : 0)}, " +
+            $"[ActiveTimeStart] = '{user.ActiveTimeStart}', " +
+            $"[ActiveTimeEnd] = '{user.ActiveTimeEnd}' " +
+            $"WHERE Id = '{user.Id}';";
+        // _users[user.Id] = user;
+        return DatabaseService.update(sql);
+    }
+    public ErrorOr<List<User>> GetUsers(int page, int size)
+    {
+        List<User> users = new();
+        string sql = "SELECT * FROM (" +
+            "SELECT ROW_NUMBER() OVER (ORDER BY [ActiveTimeStart] DESC) AS rownumber, * " +
+            $"FROM {DatabaseService.ACCOUNT_TABLE}) AS foo " +
+            $"WHERE rownumber <= {size * page} and rownumber > {size * (page - 1)};";
+        ErrorOr<DataTable> result = DatabaseService.query(sql);
+        if (result.IsError) return result.Errors;
+
+        var table = result.Value;
+
+        foreach (DataRow row in table.Rows)
+        {
+            var user = User.From(row);
+            if (user.IsError) return user.Errors;
+            users.Add(user.Value);
+        }
+        return users;
     }
 }

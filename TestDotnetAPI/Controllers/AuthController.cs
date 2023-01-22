@@ -15,8 +15,8 @@ public class AuthController : ApiController
         return Ok("Hello World");
     }
 
-    [HttpPut("change-password")]
-    public IActionResult ChangePassword(ChangePasswordRequest request)
+    [HttpPut("register")]
+    public IActionResult Register(RegisterRequest request)
     {
         return Ok("Hello World");
     }

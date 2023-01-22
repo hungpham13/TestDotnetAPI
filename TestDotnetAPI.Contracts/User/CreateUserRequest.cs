@@ -5,5 +5,8 @@ public record CreateUserRequest(
     string Name,
     string Role,
     string Password,
-    string PhoneNumber
+    string PhoneNumber,
+    bool Active,
+    DateTime? ActiveTimeStart,
+    DateTime? ActiveTimeEnd
 );
