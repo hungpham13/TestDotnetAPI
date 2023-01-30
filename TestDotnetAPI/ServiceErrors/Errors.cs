@@ -43,6 +43,12 @@ public static class Errors
             code: "User.InvalidActiveTime",
             description: $"Start active time must be before end active time");
     }
+    public static class Authentication
+    {
+        public static Error InvalidUsernameOrPassword => Error.Validation(
+            code: "Authentication.InvalidUsernameOrPassword",
+            description: "Invalid username or password");
+    }
     public static class Database
     {
         public static Error QueryError(string e) => Error.Failure(

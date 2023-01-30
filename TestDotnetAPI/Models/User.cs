@@ -12,6 +12,7 @@ public class User
     public string UserName { get; }
     public string Name { get; }
     public string Password { get; }
+    public string Salt { get; }
     public string Role { get; }
     public string PhoneNumber { get; }
     public bool Active { get; }

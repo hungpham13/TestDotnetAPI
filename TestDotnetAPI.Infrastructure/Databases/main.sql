@@ -47,3 +47,4 @@ FROM [dbo].[Account]
 
 DROP TABLE [dbo].[Account];
 ALTER DATABASE [DbThucTap] COLLATE Vietnamese_CI_AS;
+

@@ -23,7 +23,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
 
         var securityToken = new JwtSecurityToken(
             issuer: "TestDotnetAPI",
-            expires: DateTime.Today.AddDays(1),
+            expires: DateTime.Now.AddMinutes(60),
             claims: claims,
             signingCredentials: signingCredentials
             );
