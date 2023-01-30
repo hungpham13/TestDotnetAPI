@@ -23,6 +23,8 @@ public class UserService : IUserService
 
         if (table.Rows.Count > 0) return Errors.User.UsernameExisted;
 
+        //TODO hash password
+
         string sql;
         if (user.ActiveTimeStart == DateTime.MinValue)
         {
