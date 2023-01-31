@@ -12,7 +12,7 @@ public class User
     public string UserName { get; }
     public string Name { get; }
     public string Password { get; }
-    public string Salt { get; }
+    public byte[] Salt { get; }
     public string Role { get; }
     public string PhoneNumber { get; }
     public bool Active { get; }
@@ -34,7 +34,8 @@ public class User
         string phoneNumber,
         bool active,
         DateTime activeTimeStart,
-        DateTime activeTimeEnd
+        DateTime activeTimeEnd,
+        byte[] salt
     )
     {
         Id = id;
@@ -46,6 +47,7 @@ public class User
         Active = active;
         ActiveTimeStart = activeTimeStart;
         ActiveTimeEnd = activeTimeEnd;
+        Salt = salt;
     }
     private static ErrorOr<User> Create(
         string userName,
@@ -56,7 +58,8 @@ public class User
         bool active,
         DateTime activeTimeStart,
         DateTime activeTimeEnd,
-        Guid? id = null)
+        Guid? id = null,
+        byte[]? salt = null)
     {
 
         //inforce invariant
@@ -68,10 +71,6 @@ public class User
         if (name.Length is > MAX_NAME_LENGTH)
         {
             errors.Add(Errors.User.InvalidName);
-        }
-        if (password.Length is < MIN_PASSWORD_LENGTH or > MAX_PASSWORD_LENGTH)
-        {
-            errors.Add(Errors.User.InvalidPassword);
         }
         if (Enum.IsDefined(typeof(VALID_ROLES), role) is false)
         {
@@ -98,11 +97,16 @@ public class User
             phoneNumber,
             active,
             activeTimeStart,
-            activeTimeEnd
+            activeTimeEnd,
+            salt
         );
     }
     public static ErrorOr<User> From(RegisterRequest request)
     {
+        if (request.Password.Length is < MIN_PASSWORD_LENGTH or > MAX_PASSWORD_LENGTH)
+        {
+            return Errors.User.InvalidPassword;
+        }
         return Create(
             request.UserName,
             request.Name,
@@ -116,6 +120,10 @@ public class User
     }
     public static ErrorOr<User> From(CreateUserRequest request)
     {
+        if (request.Password.Length is < MIN_PASSWORD_LENGTH or > MAX_PASSWORD_LENGTH)
+        {
+            return Errors.User.InvalidPassword;
+        }
         return Create(
             request.UserName,
             request.Name,
@@ -152,7 +160,8 @@ public class User
             (bool)reader["Active"],
             Util.ConvertFromDBVal<DateTime>(reader["ActiveTimeStart"]),
             Util.ConvertFromDBVal<DateTime>(reader["ActiveTimeEnd"]),
-            Guid.Parse(reader["Id"].ToString())
+            Guid.Parse(reader["Id"].ToString()),
+            Convert.FromHexString(reader["Salt"] as string)
         );
     }
 }

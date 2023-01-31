@@ -97,7 +97,7 @@ public class UsersController : ApiController
             errors => Problem(errors));
     }
 
-    private static UserResponse MapUserResponse(User user)
+    public static UserResponse MapUserResponse(User user)
     {
         return new UserResponse(
             user.Id,

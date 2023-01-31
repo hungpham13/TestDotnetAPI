@@ -1,5 +1,10 @@
+using TestDotnetAPI.Models;
+using ErrorOr;
+
 namespace TestDotnetAPI.Services.Authentication;
 
-public class IAuthenticationService
+public interface IAuthenticationService
 {
+    ErrorOr<AuthServiceResponse> Login(string userName, string password);
+    ErrorOr<AuthServiceResponse> Register(User user);
 }

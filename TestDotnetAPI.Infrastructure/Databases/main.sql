@@ -18,9 +18,7 @@ INSERT INTO [dbo].[Account]
     ([Id], [UserName], [Name], [Role], [PhoneNumber], [Password], [Active], [ActiveTimeStart], [ActiveTimeEnd])
 VALUES('2', 'hung', 'Phạm Thành Hưng', 'User', '0971169255', '12345678', 1, '1/17/2023 12:02:14 PM', '1/17/2024 12:02:14 PM');
 
-SELECT TOP (1000)
-    *
-FROM [DbThucTap].[dbo].[Account]
+SELECT TOP (1000) * FROM [DbThucTap].[dbo].[Account]
 
 SELECT *
 FROM [dbo].[Account]
@@ -42,9 +40,10 @@ FROM (
 ) AS foo
 WHERE rownumber <= 10 and rownumber >= 5
 
-SELECT COUNT(*)
-FROM [dbo].[Account]
+SELECT COUNT(*) FROM [dbo].[Account];
 
 DROP TABLE [dbo].[Account];
 ALTER DATABASE [DbThucTap] COLLATE Vietnamese_CI_AS;
 
+ALTER TABLE [dbo].[Account] ALTER COLUMN  Salt NVARCHAR(128)
+ALTER TABLE [dbo].[Account] ALTER COLUMN  Password NVARCHAR(128)

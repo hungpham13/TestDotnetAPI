@@ -4,6 +4,7 @@ using ErrorOr;
 using TestDotnetAPI.Services.Database;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using TestDotnetAPI.Common.Utils;
 
 namespace TestDotnetAPI.Services.Users;
 
@@ -23,20 +24,21 @@ public class UserService : IUserService
 
         if (table.Rows.Count > 0) return Errors.User.UsernameExisted;
 
-        //TODO hash password
+        //hash password
+        var hash = Util.HashPasword(user.Password, out byte[] salt);
 
         string sql;
         if (user.ActiveTimeStart == DateTime.MinValue)
         {
             sql =
-                $"INSERT INTO {DatabaseService.ACCOUNT_TABLE} ([Id], [UserName], [Name], [Role], [PhoneNumber], [Password], [Active]) VALUES" +
-                $"('{user.Id}', '{user.UserName}', '{user.Name}', '{user.Role}', '{user.PhoneNumber}', '{user.Password}', {(user.Active ? 1 : 0)});";
+                $"INSERT INTO {DatabaseService.ACCOUNT_TABLE} ([Id], [UserName], [Name], [Role], [PhoneNumber], [Password], [Active], [Salt]) VALUES" +
+                $"('{user.Id}', '{user.UserName}', '{user.Name}', '{user.Role}', '{user.PhoneNumber}', '{hash}', {(user.Active ? 1 : 0)}, '{Convert.ToHexString(salt)}');";
         }
         else
         {
             sql =
-                $"INSERT INTO {DatabaseService.ACCOUNT_TABLE} ([Id], [UserName], [Name], [Role], [PhoneNumber], [Password], [Active], [ActiveTimeStart], [ActiveTimeEnd]) VALUES" +
-                $"('{user.Id}', '{user.UserName}', '{user.Name}', '{user.Role}', '{user.PhoneNumber}', '{user.Password}', {(user.Active ? 1 : 0)}, '{user.ActiveTimeStart}', '{user.ActiveTimeEnd}');";
+                $"INSERT INTO {DatabaseService.ACCOUNT_TABLE} ([Id], [UserName], [Name], [Role], [PhoneNumber], [Password], [Active], [ActiveTimeStart], [ActiveTimeEnd], [Salt]) VALUES" +
+                $"('{user.Id}', '{user.UserName}', '{user.Name}', '{user.Role}', '{user.PhoneNumber}', '{hash}', {(user.Active ? 1 : 0)}, '{user.ActiveTimeStart}', '{user.ActiveTimeEnd}', '{Convert.ToHexString(salt)}');";
         }
         return DatabaseService.insert(sql);
     }

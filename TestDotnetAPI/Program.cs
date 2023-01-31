@@ -5,6 +5,15 @@ using TestDotnetAPI.Common.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://example.com");
+        });
+});
+
 {
     // Add services to the container.
     builder.Services.AddScoped<IBreakfastService, BreakfastService>();
@@ -20,6 +29,12 @@ var app = builder.Build();
 {
     app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    app.UseRouting();
+
+    app.UseCors();
+
+    app.UseAuthorization();
     app.MapControllers();
     app.Run();
 }

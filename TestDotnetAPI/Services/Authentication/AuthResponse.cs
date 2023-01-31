@@ -1,7 +1,7 @@
 using TestDotnetAPI.Models;
 namespace TestDotnetAPI.Services.Authentication;
 
-public record AuthResponse(
+public record AuthServiceResponse(
     User User,
     string Token
 );

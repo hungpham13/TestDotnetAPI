@@ -1,0 +1,10 @@
+POST https://localhost:7279/auth/register
+Content-Type: application/json
+
+{
+  "userName": "hungpham",
+  "name": "Phạm Thành Hưng",
+  "role": "User",
+  "password": "12345678",
+  "phoneNumber": "0971169255"
+}
