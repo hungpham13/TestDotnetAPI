@@ -3,7 +3,6 @@ using ErrorOr;
 using TestDotnetAPI.Common.Authentication;
 using TestDotnetAPI.Contracts.Attendance;
 using TestDotnetAPI.Models;
-using TestDotnetAPI.ServiceErrors;
 using TestDotnetAPI.Services.Attendances;
 using TestDotnetAPI.Services.Events;
 using TestDotnetAPI.Services.Users;
@@ -65,7 +64,10 @@ public class AttendancesController : ApiController
     [HttpGet("{id:guid}/qr-image/load")]
     public IActionResult GetAttendanceQR(Guid id)
     {
-        return Ok("Hello World");
+        var image = _attendanceService.GetAttendanceQR(id);
+        return image.Match(
+            i => File(i, "image/png"),
+            errors => Problem(errors));
     }
 
     [HttpPut("{id:guid}")]

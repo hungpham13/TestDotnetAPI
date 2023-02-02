@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7ktR/HXLU449HiOMKOQWgFCt8DxZQtoAgQ3g30XUoUxWGlbS/g/q9FXfF6QYjLIKZMlmG6zjtTRe9Mc9pXauDQ==",
+  "dgSpecHash": "PYD1i6p09DjrE34CfS4KandxyUNMf4PtEwzDuqiiciA4co9wnd8U8XkJcEbLrCid47U92ZeitvZ+HOwWmGwzjw==",
   "success": true,
   "projectFilePath": "/home/hung/DotNetProjects/TestDotnetAPI/TestDotnetAPI/TestDotnetAPI.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "/home/hung/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "/home/hung/.nuget/packages/microsoft.win32.registry/5.0.0/microsoft.win32.registry.5.0.0.nupkg.sha512",
     "/home/hung/.nuget/packages/microsoft.win32.systemevents/5.0.0/microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "/home/hung/.nuget/packages/qrcoder/1.4.3/qrcoder.1.4.3.nupkg.sha512",
     "/home/hung/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/home/hung/.nuget/packages/system.configuration.configurationmanager/5.0.0/system.configuration.configurationmanager.5.0.0.nupkg.sha512",
     "/home/hung/.nuget/packages/system.diagnostics.diagnosticsource/5.0.0/system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",

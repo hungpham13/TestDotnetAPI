@@ -9,4 +9,5 @@ public interface IAttendanceService
     public ErrorOr<Created> AddAttendance(Attendance attendance);
     public ErrorOr<Deleted> DeleteAttendance(Guid id);
     public ErrorOr<Updated> UpdateAttendance(Attendance attendance);
+    public ErrorOr<byte[]> GetAttendanceQR(Guid id);
 }

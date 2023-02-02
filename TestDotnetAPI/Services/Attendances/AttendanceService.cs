@@ -2,6 +2,7 @@ using System.Data;
 using TestDotnetAPI.Models;
 using TestDotnetAPI.Services.Database;
 using ErrorOr;
+using QRCoder;
 using TestDotnetAPI.ServiceErrors;
 using TestDotnetAPI.Services.Events;
 using TestDotnetAPI.Services.Users;
@@ -43,6 +44,14 @@ public class AttendanceService : IAttendanceService
         if (user.IsError) return user.Errors;
         
         return Attendance.From(row, user.Value, e.Value);
+    }
+
+    public ErrorOr<byte[]> GetAttendanceQR(Guid id)
+    {
+        QRCodeGenerator qrGenerator = new QRCodeGenerator();
+        QRCodeData qrCodeData = qrGenerator.CreateQrCode(id.ToString(), QRCodeGenerator.ECCLevel.Q);
+        PngByteQRCode qrCode = new PngByteQRCode(qrCodeData);
+        return qrCode.GetGraphic(20);
     }
     public ErrorOr<Deleted> DeleteAttendance(Guid id)
     {
