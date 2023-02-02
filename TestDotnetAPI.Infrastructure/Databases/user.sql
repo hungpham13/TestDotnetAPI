@@ -25,7 +25,7 @@ FROM [dbo].[Account]
 WHERE [Id] = '2'
 
 
-DELETE FROM [dbo].[Account] WHERE [Id] = '2'
+DELETE FROM [dbo].[Account]
 
 UPDATE [dbo].[Account] SET [UserName] = 'hung3', [Name] = 'Phạm Thành Hưng', [Role] = 'User', [PhoneNumber] = '0971169255', [Password] = '12345678', [Active] = 0, [ActiveTimeStart] = '1/1/0001 12:00:00 AM', [ActiveTimeEnd] = '1/1/0001 12:00:00 AM' WHERE Id = '9851dbb2-0953-48d3-87a4-2876eea76c42';
 
