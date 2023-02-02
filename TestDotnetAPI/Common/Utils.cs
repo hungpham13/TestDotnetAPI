@@ -38,5 +38,4 @@ public static class Util
         var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
         return hashToCompare.SequenceEqual(Convert.FromHexString(hash));
     }
-
 }

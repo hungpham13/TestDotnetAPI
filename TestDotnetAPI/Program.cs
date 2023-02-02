@@ -2,6 +2,8 @@ using TestDotnetAPI.Services.Breakfasts;
 using TestDotnetAPI.Services.Users;
 using TestDotnetAPI.Services.Authentication;
 using TestDotnetAPI.Common.Authentication;
+using TestDotnetAPI.Services.Attendances;
+using TestDotnetAPI.Services.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,8 @@ builder.Services.AddCors(options =>
     // Add services to the container.
     builder.Services.AddScoped<IBreakfastService, BreakfastService>();
     builder.Services.AddScoped<IUserService, UserService>();
+    builder.Services.AddScoped<IEventService, EventService>();
+    builder.Services.AddScoped<IAttendanceService, AttendanceService>();
     builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
     builder.Services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 

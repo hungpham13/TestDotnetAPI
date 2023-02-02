@@ -7,5 +7,7 @@ Content-Type: application/json
     "role": "User",
     "password": "12345678",
     "phoneNumber": "0971169255",
-    "active": true
+    "active": true,
+    "activeTimeStart": "2023-01-31T16:33:21",
+  "activeTimeEnd": "2023-05-30T00:00:00"
 }

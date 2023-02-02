@@ -2,7 +2,6 @@ using TestDotnetAPI.ServiceErrors;
 using ErrorOr;
 using TestDotnetAPI.Contracts.User;
 using TestDotnetAPI.Contracts.Authentication;
-using Microsoft.Data.SqlClient;
 using TestDotnetAPI.Common.Utils;
 
 namespace TestDotnetAPI.Models;
@@ -49,7 +48,7 @@ public class User
         ActiveTimeEnd = activeTimeEnd;
         Salt = salt;
     }
-    private static ErrorOr<User> Create(
+    public static ErrorOr<User> Create(
         string userName,
         string name,
         string password,

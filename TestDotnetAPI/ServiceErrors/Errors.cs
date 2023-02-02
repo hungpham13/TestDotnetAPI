@@ -43,11 +43,59 @@ public static class Errors
             code: "User.InvalidActiveTime",
             description: $"Start active time must be before end active time");
     }
+
+    public static class Event
+    {
+        public static Error InvalidStatus => Error.Validation(
+            code: "Event.InvalidStatus",
+            description: $"Status must be {string.Join(", ", Enum.GetNames(typeof(Models.Event.VALID_STATUS))[..^1])} or {Enum.GetNames(typeof(Models.Event.VALID_STATUS))[^1]}");
+        public static Error InvalidName => Error.Validation(
+            code: "Event.InvalidName",
+            description: $"Event name must not longer than {Models.Event.MAX_NAME_LENGTH} characters long");
+        public static Error InvalidPerformerName => Error.Validation(
+            code: "Event.InvalidPerformerName",
+            description: $"Performer name must not longer than {Models.Event.MAX_PERFORMERNAME_LENGTH} characters long");
+        public static Error InvalidUrl => Error.Validation(
+            code: "Event.InvalidUrl",
+            description: $"Image Url must not longer than {Models.Event.MAX_MAINIMAGE_LENGTH} characters long");
+        public static Error InvalidDescription => Error.Validation(
+            code: "Event.InvalidDescription",
+            description: $"Description must not longer than {Models.Event.MAX_DESCRIPTION_LENGTH} characters long");
+        public static Error NotFound => Error.NotFound(
+            code: "Event.NotFound",
+            description: "Event not found");
+    }
+    public static class Stream
+    {
+        public static Error InvalidUrl => Error.Validation(
+            code: "Stream.InvalidUrl",
+            description: $"Stream url must not longer than {Models.Stream.MAX_URL_LENGTH} characters long");
+        public static Error InvalidName => Error.Validation(
+            code: "Stream.InvalidName",
+            description: $"Stream name must not longer than {Models.Stream.MAX_NAME_LENGTH} characters long");
+    }
+    public static class Attendance
+    {
+        public static Error InvalidStatus => Error.Validation(
+            code: "Attendance.InvalidStatus",
+            description: $"Status must be {string.Join(", ", Enum.GetNames(typeof(Models.Attendance.VALID_STATUS))[..^1])} or {Enum.GetNames(typeof(Models.Attendance.VALID_STATUS))[^1]}");
+        public static Error NotFound => Error.NotFound(
+            code: "Attendance.NotFound",
+            description: "Attendance not found");
+    }
     public static class Authentication
     {
         public static Error InvalidUsernameOrPassword => Error.Validation(
             code: "Authentication.InvalidUsernameOrPassword",
-            description: "Invalid username or password");
+            description: "Invalid username or password.");
+
+        public static Error UnauthorizedRole => Error.Validation(
+            code: "Authentication.UnauthorizedRole",
+            description: "Permission denied!");
+        public static Error InvalidToken => Error.Validation(
+            code: "Authentication.InvalidToken",
+            description: "Invalid token.");
+        
     }
     public static class Database
     {

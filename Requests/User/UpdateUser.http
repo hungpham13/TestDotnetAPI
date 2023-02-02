@@ -1,5 +1,5 @@
 @id=9851dbb2-0953-48d3-87a4-2876eea76c42
-@token=
+@token=234723753028753287492749
 
 PUT https://localhost:7279/users/{{id}}?token={{token}}
 Content-Type: application/json

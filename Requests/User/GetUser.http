@@ -1,3 +1,1 @@
-@id=830671b0-5b24-4be4-aafd-683111b7091d
-
-GET https://localhost:7279/users/{{id}}
+GET https://localhost:7279/users/95027034703475

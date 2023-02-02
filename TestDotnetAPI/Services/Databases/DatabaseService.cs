@@ -9,6 +9,10 @@ class DatabaseService
 {
     public const string CONNECTION_STRING = "Data Source=172.16.1.118;Initial Catalog=DbThucTap;User ID=thuctap;Password=tt@123;Trust Server Certificate=True;";
     public const string ACCOUNT_TABLE = "[dbo].[Account]";
+    public const string EVENT_TABLE = "[dbo].[Event]";
+    public const string STREAM_TABLE = "[dbo].[Stream]";
+    public const string EVENT_STREAM_TABLE = "[dbo].[EventStream]";
+    public const string ATTENDANCE_TABLE = "[dbo].[Attendance]";
     public static SqlConnection conn = null;
 
     private static void connect()

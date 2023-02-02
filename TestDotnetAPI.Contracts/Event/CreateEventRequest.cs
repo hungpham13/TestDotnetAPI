@@ -1,13 +1,14 @@
+using TestDotnetAPI.Contracts.Attendance;
+
 namespace TestDotnetAPI.Contracts.Event;
 
 public record CreateEventRequest(
     string Name,
     string Performer,
-    DateTime time,
+    DateTime Time,
     string Status,
     string Description,
-    List<Stream> Streams,
-    string mainImage,
-    string coverImage,
-    List<Attendance> Attendances
+    List<StreamResponse> Streams,
+    string MainImage,
+    string CoverImage
 );

@@ -5,6 +5,7 @@ using TestDotnetAPI.Models;
 using TestDotnetAPI.Services.Users;
 using TestDotnetAPI.Services.Database;
 using System.Data;
+using TestDotnetAPI.Common.Authentication;
 
 namespace TestDotnetAPI.Controllers;
 
@@ -12,21 +13,22 @@ public class UsersController : ApiController
 {
 
     private readonly IUserService _userService;
-    public UsersController(IUserService userService)
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
+    public UsersController(IUserService userService, IJwtTokenGenerator jwtTokenGenerator)
     {
         _userService = userService;
+        _jwtTokenGenerator = jwtTokenGenerator;
     }
 
     [HttpPost]
-    public IActionResult CreateUser(CreateUserRequest request)
+    public IActionResult CreateUser(CreateUserRequest request, string token)
     {
+        ErrorOr<string> caller = _jwtTokenGenerator.ValidateToken(token, new []{ Models.User.VALID_ROLES.Admin });
+        if (caller.IsError) return Problem(caller.Errors);
+        
         // transfer to model format
-
         ErrorOr<Models.User> requestToUserFormat = Models.User.From(request);
-        if (requestToUserFormat.IsError)
-        {
-            return Problem(requestToUserFormat.Errors);
-        }
+        if (requestToUserFormat.IsError) return Problem(requestToUserFormat.Errors);
         var user = requestToUserFormat.Value;
 
         // save user to database
@@ -39,8 +41,10 @@ public class UsersController : ApiController
     }
 
     [HttpGet("{id:guid}")]
-    public IActionResult GetUser(Guid id)
+    public IActionResult GetUser(Guid id, string token)
     {
+        ErrorOr<string> caller = _jwtTokenGenerator.ValidateToken(token);
+        if (caller.IsError) return Problem(caller.Errors);
         ErrorOr<Models.User> userResult = _userService.GetUser(id);
         return userResult.Match(
             user => Ok(MapUserResponse(user)),
@@ -48,8 +52,13 @@ public class UsersController : ApiController
     }
 
     [HttpGet("")]
-    public IActionResult GetUsers(int page, int size)
+    public IActionResult GetUsers(int page, int size, string token)
     {
+        // validate
+        ErrorOr<string> caller = _jwtTokenGenerator.ValidateToken(token, new []{ Models.User.VALID_ROLES.Admin });
+        if (caller.IsError) return Problem(caller.Errors);
+        
+        // get all
         string getTotalSql = $"SELECT COUNT(*) FROM {DatabaseService.ACCOUNT_TABLE}";
         ErrorOr<DataTable> result = DatabaseService.query(getTotalSql);
         if (result.IsError) return Problem(result.Errors);
@@ -67,8 +76,11 @@ public class UsersController : ApiController
     }
 
     [HttpDelete("{id:guid}")]
-    public IActionResult DeleteUser(Guid id)
+    public IActionResult DeleteUser(Guid id, string token)
     {
+        ErrorOr<string> caller = _jwtTokenGenerator.ValidateToken(token, new []{ Models.User.VALID_ROLES.Admin });
+        if (caller.IsError) return Problem(caller.Errors);
+        
         ErrorOr<Deleted> result = _userService.DeleteUser(id);
         return result.Match(
             deleted => Ok(),
@@ -76,8 +88,11 @@ public class UsersController : ApiController
     }
 
     [HttpPut("{id:guid}")]
-    public IActionResult UpdateUser(Guid id, UpdateUserRequest request)
+    public IActionResult UpdateUser(Guid id, string token, UpdateUserRequest request)
     {
+        ErrorOr<string> caller = _jwtTokenGenerator.ValidateToken(token, new []{ Models.User.VALID_ROLES.Admin });
+        if (caller.IsError) return Problem(caller.Errors);
+        
         ErrorOr<Models.User> userResult = _userService.GetUser(id);
         if (userResult.IsError) return Problem(userResult.Errors);
         Models.User oldUser = userResult.Value;

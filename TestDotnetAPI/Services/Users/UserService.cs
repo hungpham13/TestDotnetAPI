@@ -2,7 +2,6 @@ using TestDotnetAPI.Models;
 using TestDotnetAPI.ServiceErrors;
 using ErrorOr;
 using TestDotnetAPI.Services.Database;
-using Microsoft.Data.SqlClient;
 using System.Data;
 using TestDotnetAPI.Common.Utils;
 
